@@ -1,11 +1,26 @@
 ﻿#include <iostream>
 
+struct Base {
+    virtual void info() const = 0;
+};
+
+struct Window : Base {
+    void info() const {
+        std::cout << "info";
+    }
+};
+
+struct D3DX : Base {
+    void info() const {
+        std::cout << "d3dx";
+    }
+};
+
 int main()
 {
-    std::cout << "Hello World!\n";
-}
+    Base* window = new Window;
+    Base* d3dx = new D3DX;
 
-struct MyStruct
-{
-    int x, y;
-};
+    window->info();
+    d3dx->info();
+}
